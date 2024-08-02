@@ -1,4 +1,3 @@
-
 function encriptar(texto) {
     return texto
         .replace(/e/g, 'enter')
@@ -20,24 +19,44 @@ function desencriptar(texto) {
 function encriptarTexto() {
     let inputTexto = document.getElementById('inputTexto').value;
     let textoEncriptado = encriptar(inputTexto);
-    document.getElementById('outputMensaje').innerText = textoEncriptado || "Ningún mensaje fue encontrado";
-    document.getElementById('outputMostrarMensaje').innerText = ''
-    togglePlaceholderImage(textoEncriptado);
+    mostrarResultado(textoEncriptado);
 }
 
 function desencriptarTexto() {
     let inputTexto = document.getElementById('inputTexto').value;
     let textoDesencriptado = desencriptar(inputTexto);
-    document.getElementById('outputMensaje').innerText = textoDesencriptado || "Ningún mensaje fue encontrado";
-    document.getElementById('outputMostrarMensaje').innerText = ''
-    togglePlaceholderImage(textoDesencriptado);
+    mostrarResultado(textoDesencriptado);
 }
 
-function togglePlaceholderImage(texto) {
-    let placeholderImage = document.getElementById('placeholderImage');
+function mostrarResultado(texto) {
+    const outputMensaje = document.getElementById('outputMensaje');
+    const placeholderImage = document.getElementById('placeholderImage');
+    const btnCopy = document.getElementById('btn-copy');
+    const mensajeInicial = document.getElementById('mensajeInicial');
+
+    outputMensaje.innerText = texto || "Ningún mensaje fue encontrado";
     if (texto) {
         placeholderImage.style.display = 'none';
+        btnCopy.style.display = 'block';
+        mensajeInicial.style.display = 'none';
     } else {
         placeholderImage.style.display = 'block';
+        btnCopy.style.display = 'none';
+        mensajeInicial.style.display = 'block';
     }
+}
+
+function copiarTexto() {
+    const outputMensaje = document.getElementById('outputMensaje').textContent;
+    navigator.clipboard.writeText(outputMensaje).then(() => {
+        mostrarMensajeCopiado();
+    });
+}
+
+function mostrarMensajeCopiado() {
+    const copyMessage = document.getElementById('copyMessage');
+    copyMessage.style.display = 'block';
+    setTimeout(() => {
+        copyMessage.style.display = 'none';
+    }, 2000);
 }

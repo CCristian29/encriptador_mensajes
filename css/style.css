@@ -11,44 +11,37 @@
     background-color: var(--color-primario);
 }
 
+.logo {
+    font-family: "Permanent Marker", cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px;
+    color: #020b2f;
+    text-shadow: 2px 2px 4px rgba(0, 17, 74, 0.822);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 .fa-user-secret {
     color: var(--color-terceario);
     font-size: 1.5rem;
     padding: 10px 15px 5px;
 }
 
-.contenido {
-    font-family: Arial, sans-serif;
+.contenido,
+.contenido_encriptador {
     display: flex;
-    height: auto;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* Para mejorar la disposición en pantallas pequeñas */
-}
-
-.contenido_encriptador {
-    display: flex;
     gap: 20px;
-    padding-top: 20px;
-    margin: 20px;
-    flex-direction: column;
-    /* Para mejorar la disposición en pantallas pequeñas */
-    align-items: center;
-    /* Centra los elementos */
 }
 
 .input-section {
     padding: 20px;
     flex: 2;
     width: 100%;
-    /* Para tomar el ancho completo en pantallas pequeñas */
     box-sizing: border-box;
-    /* Para incluir el padding en el cálculo del ancho */
-}
-
-.logo {
-    height: 40px;
 }
 
 #inputTexto {
@@ -69,31 +62,28 @@
 
 #inputTexto::placeholder {
     color: var(--color-terceario);
-    font-size: 1rem;
 }
 
-.note {
+.note,
+#mensajeInicial {
     margin: 10px 0;
     color: #555;
     font-size: 12px;
 }
-#outputMostrarMensaje{
-    margin: 10px 0;
-    color: #555;
-    font-size: 12px;
+
+#mensajeInicial {
     background-color: var(--color-segundario);
 }
 
 .buttons {
     display: flex;
     gap: 10px;
-    /* Reduce el gap para pantallas pequeñas */
     justify-content: center;
     flex-wrap: wrap;
-    /* Permite que los botones se envuelvan en múltiples líneas */
 }
 
-button {
+button,
+#btn-copy {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -101,8 +91,28 @@ button {
     cursor: pointer;
 }
 
+#btn-copy {
+    display: none;
+    background-color: var(--color-terceario);
+    color: #fff;
+}
+
+.copy-message {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--color-terceario);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
 .btn-encrypt {
-    background-color: #002366;
+    background-color: var(--color-terceario);
     color: #fff;
 }
 
@@ -113,11 +123,10 @@ button {
 
 .output-section {
     width: 100%;
-    height: auto;
     padding: 20px;
     flex: 1;
     background-color: var(--color-segundario);
-    box-shadow: 0 4px 6px #00000008;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -141,6 +150,10 @@ button {
     background-color: var(--color-segundario);
 }
 
+.fa-copy {
+    background-color: transparent;
+}
+
 /* Media Queries */
 @media (min-width: 600px) {
     #inputTexto {
@@ -153,42 +166,32 @@ button {
 }
 
 @media (min-width: 900px) {
-    .contenido {
-        flex-direction: row;
-    }
 
+    .contenido,
     .contenido_encriptador {
         flex-direction: row;
     }
 
     .input-section {
         width: auto;
-        /* Ajusta el ancho para pantallas grandes */
     }
 
     .output-section {
         width: 400px;
-        /* Ajusta el ancho para pantallas grandes */
         height: 80vh;
-        /* Ajusta la altura para pantallas grandes */
     }
 
     #inputTexto {
         width: 90vh;
-        /* Ajusta el ancho para pantallas grandes */
         height: 60vh;
-        /* Ajusta la altura para pantallas grandes */
         font-size: 32px;
-        /* Ajusta el tamaño de fuente para pantallas grandes */
     }
 
     #inputTexto::placeholder {
         font-size: 32px;
-        /* Ajusta el tamaño de fuente del placeholder para pantallas grandes */
     }
 
     .buttons {
         gap: 30px;
-        /* Ajusta el gap para pantallas grandes */
     }
 }
